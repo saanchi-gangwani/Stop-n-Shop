@@ -1,2 +1,2 @@
 # Stop-n-Shop
-Sample E-Commerce Website
+E-Commerce Website

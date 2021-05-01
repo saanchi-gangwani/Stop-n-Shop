@@ -1,2 +1,3 @@
-/config/variables
+/config/composer
 /sql
+/config/.env
