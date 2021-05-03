@@ -61,6 +61,8 @@ mysqli_query($con,$query);
 		<?php 
 		$query3="update categories set name='".$_POST["setto"]."' where id='".$_POST["modifyid"]."';";
 		mysqli_query($con,$query3);
+		$query4="delete from categories where id='".$_POST["toremove"]."';";
+		mysqli_query($con,$query4);
 		?>
 	</div>
 </body>
