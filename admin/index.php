@@ -33,10 +33,17 @@ mysqli_query($con,$query);
 					NAME
 				</th>
 			</tr>
-			<?php 
+			<?php
 			while($row=mysqli_fetch_assoc($result))
 			{
-				echo "<tr><td>".$row["id"]."</td><td>".$row["name"]."</td></tr>";
+				echo "<tr>
+                <td>"
+                  .$row["id"].
+                "</td>
+                <td>"
+                  .$row["name"].
+                "</td>
+              </tr>";
 			}
 			?>
 		</table>
