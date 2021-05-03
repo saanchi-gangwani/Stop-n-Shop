@@ -26,7 +26,7 @@ mysqli_query($con,$query);
 			SET TO
 			<input type="text" name="setto" id="setto">
 			DELETE
-			<input type="text" name=""
+			<input type="text" name="toremove" id="toremove">
 			<button type="submit"> UPPDATE </button>
 
 		</form>
