@@ -15,9 +15,20 @@ mysqli_query($con,$query);
 			CATEGORY
 		</h2>
 		<form action="" method="post">
-			CATEGORY NAME
+			ADD CATEGORY NAME
 			<input type="text" name="name" id="name">
-			<button type="submit">ADD</button>
+			<br>
+			<br>
+			MODIFY ID
+			<input type="text" name="modifyid" id="modifyid">
+			<br>
+			<br>
+			SET TO
+			<input type="text" name="setto" id="setto">
+			DELETE
+			<input type="text" name=""
+			<button type="submit"> UPPDATE </button>
+
 		</form>
 		<br>
 		<?php
@@ -47,6 +58,10 @@ mysqli_query($con,$query);
 			}
 			?>
 		</table>
+		<?php 
+		$query3="update categories set name='".$_POST["setto"]."' where id='".$_POST["modifyid"]."';";
+		mysqli_query($con,$query3);
+		?>
 	</div>
 </body>
 </html>
