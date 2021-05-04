@@ -35,7 +35,6 @@ if(isset($_POST['update'])){
 			echo "'Delete Row ID' needs to be a valid row index<br>";
 		}
 	}
-	header('index.php');
 }
 ?>
 <!DOCTYPE html>
