@@ -11,7 +11,7 @@ if(isset($_POST['update'])){
 
 	if(isset($_POST['modifyid']) && trim($_POST['modifyid'])!=""){
 		if(ctype_digit($_POST['modifyid'])){
-			if(isset($_POST['setto'])){
+			if(isset($_POST['setto']) && trim($_POST['setto'])!=""){
 				$query="update categories set name='".$_POST["setto"]."' where id='".$_POST["modifyid"]."';";
 				if(!mysqli_query($con,$query)){
 					echo 'could not update the value as '.mysqli_error($con).'<br>';
