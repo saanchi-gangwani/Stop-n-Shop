@@ -1,8 +1,42 @@
 <?php
 require(__DIR__."/../config/connection.php");
 $con=mysqli_connect($host,$username,$password,$dbname) or die("Could not connect to database");
-$query="insert into categories(name) values('".$_POST["name"]."');";
-mysqli_query($con,$query);
+
+if(isset($_POST['update'])){
+	if(isset($_POST['name']) && trim($_POST['name'])!=""){
+		$query="insert into categories(name) values('".$_POST["name"]."');";
+		if(!mysqli_query($con,$query)){
+			echo 'Could not add category name '.mysqli_error($con).'<br>';
+		}
+	}
+
+	if(isset($_POST['modifyid']) && trim($_POST['modifyid'])!=""){
+		if(ctype_digit($_POST['modifyid'])){
+			if(isset($_POST['setto'])){
+				$query="update categories set name='".$_POST["setto"]."' where id='".$_POST["modifyid"]."';";
+				if(!mysqli_query($con,$query)){
+					echo 'could not update the value as '.mysqli_error($con).'<br>';
+				}
+			}
+		}
+		else{
+			echo "'Modify ID' needs to be a valid row index<br>";
+		}
+	}
+
+	if(isset($_POST['toremove']) && trim($_POST['toremove'])!=""){
+		if(ctype_digit($_POST['toremove'])){
+			$query="delete from categories where id='".$_POST["toremove"]."';";
+			if(!mysqli_query($con,$query)){
+				echo 'could not delete the row as '.mysqli_error($con).'<br>';
+			}
+		}
+		else{
+			echo "'Delete Row ID' needs to be a valid row index<br>";
+		}
+	}
+	header('index.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,10 +59,13 @@ mysqli_query($con,$query);
 			<br>
 			SET TO
 			<input type="text" name="setto" id="setto">
-			DELETE
+			<br>
+			<br>
+			DELETE ROW ID
 			<input type="text" name="toremove" id="toremove">
-			<button type="submit"> UPPDATE </button>
-
+			<br>
+			<br>
+			<button type="submit" name='update' id='update'> UPDATE CATEGORY TABLE</button>
 		</form>
 		<br>
 		<?php
@@ -58,12 +95,11 @@ mysqli_query($con,$query);
 			}
 			?>
 		</table>
-		<?php 
-		$query3="update categories set name='".$_POST["setto"]."' where id='".$_POST["modifyid"]."';";
-		mysqli_query($con,$query3);
-		$query4="delete from categories where id='".$_POST["toremove"]."';";
-		mysqli_query($con,$query4);
-		?>
 	</div>
 </body>
+<script type="text/javascript">
+	if ( window.history.replaceState ) {
+		window.history.replaceState( null, null, window.location.href );
+	}
+</script>
 </html>
