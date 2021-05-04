@@ -1,6 +1,5 @@
 <?php
 require(__DIR__."/../config/connection.php");
-$con=mysqli_connect($host,$username,$password,$dbname) or die("Could not connect to database");
 
 if(isset($_POST['update'])){
 	if(isset($_POST['name']) && trim($_POST['name'])!=""){
