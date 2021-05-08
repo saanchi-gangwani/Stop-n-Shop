@@ -70,7 +70,7 @@ if(isset($_POST['update'])){
 		$query2="select * from categories;";
 		$result=mysqli_query($con,$query2);
 		?>
-		<table border=2>
+		<table border='2'>
 			<tr>
 				<th>
 					ID
@@ -95,11 +95,13 @@ if(isset($_POST['update'])){
 		</table>
 	</div>
 	<hr>
-	<?php 
+	<?php
 		if(isset($_POST['update_product'])){
 			if(isset($_POST['cat_product']) && trim($_POST['cat_product'])!="" && isset($_POST['name_product']) && trim($_POST['name_product'])!="" && isset($_POST['description']) && trim($_POST['description'])!="" && isset($_POST['price']) && trim($_POST['price'])!=""  && isset($_POST['btn']) && trim($_POST['btn'])!=""){
 				$target_dir = "../imgs/";
-				$target_file = $target_dir . basename($_FILES["img"]["name"]);
+				$exploded_array = explode(".",basename($_FILES['img']['name']));
+				$file_ext = strtolower(end($exploded_array));
+				$target_file = $target_dir . $_POST['name_product'].'.'.$file_ext;
 				$check = getimagesize($_FILES["img"]["tmp_name"]);
 				if($check !== false) {
 					if (file_exists($target_file)) {
@@ -108,11 +110,30 @@ if(isset($_POST['update'])){
 					else{
 						if (!move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
 							echo "Image could not be uploaded.";
-						} 
+						}
 					}
-				} 
+				}
 				else {
 					echo "File is not an image.";
+				}
+
+				$query2= "select id from categories where name='".$_POST['cat_product']."';";
+				$result=mysqli_query($con,$query2);
+				$category="";
+				if(mysqli_num_rows($result)!=0){
+					while($row=mysqli_fetch_assoc($result)){
+						$category=$row['id'];
+					}
+
+					$query= "insert into products(name,description,price,category_id,image,featured) values('".$_POST['name_product']."','".$_POST['description']."','".$_POST['price']."','".$category."','".$target_file."','".$_POST['btn']."');";
+					if(!mysqli_query($con,$query)){
+						echo 'Data not inserted into products table as '.mysqli_error($con);
+					}
+
+				}
+				else{
+					echo 'No record of category with name '.$_POST['cat_product'].' found!!';
+					unlink($target_file);
 				}
 			}
 		}
@@ -131,11 +152,11 @@ if(isset($_POST['update'])){
 			<br>
 			<br>
 			ADD PRODUCT DESCRIPTION
-			<input type="text" name="description" id="description">
+			<textarea name="description" id="description"></textarea>
 			<br>
 			<br>
 			ADD PRODUCT PRICE
-			<input type="text" name="price" id="price">
+			<input type="number" name="price" id="price">
 			<br>
 			<br>
 			ADD PRODUCT IMAGE
@@ -152,6 +173,32 @@ if(isset($_POST['update'])){
 			<button type="submit" name='update_product' id='update_product'> UPDATE PRODUCT TABLE</button>
 		</form>
 		<br>
+		<?php
+		$query2='select * from products;';
+		$result=mysqli_query($con,$query2);
+		?>
+		<table border='2'>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Image</th>
+				<th>Featured</th>
+			</tr>
+			<?php
+				while($row=mysqli_fetch_assoc($result)){
+					echo "<tr>
+									<td>".$row['id']."</td>
+									<td>".$row['name']."</td>
+									<td>".$row['description']."</td>
+									<td>".$row['price']."</td>
+									<td>".$row['image']."</td>
+									<td>".$row['featured']."</td>
+								</tr>";
+				}
+			?>
+		</table>
 	</div>
 </body>
 <script type="text/javascript">
