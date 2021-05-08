@@ -146,7 +146,7 @@ if(isset($_POST['update'])){
 					}
 				}
 				else{
-					echo 'choose an update method for produt table.'
+					echo 'choose an update method for produt table.';
 				}
 			}
 		}
