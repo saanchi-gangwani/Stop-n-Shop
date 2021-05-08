@@ -93,43 +93,60 @@ if(isset($_POST['update'])){
 	<hr>
 	<?php
 		if(isset($_POST['update_product'])){
-			if(isset($_POST['cat_product']) && trim($_POST['cat_product'])!="" && isset($_POST['name_product']) && trim($_POST['name_product'])!="" && isset($_POST['description']) && trim($_POST['description'])!="" && isset($_POST['price']) && trim($_POST['price'])!=""  && isset($_POST['btn']) && trim($_POST['btn'])!=""){
-				$target_dir = "../imgs/";
-				$exploded_array = explode(".",basename($_FILES['img']['name']));
-				$file_ext = strtolower(end($exploded_array));
-				$target_file = $target_dir . $_POST['name_product'].'.'.$file_ext;
-				$check = getimagesize($_FILES["img"]["tmp_name"]);
-				if($check !== false) {
-					if (file_exists($target_file)) {
-						echo "Sorry, file already exists.";
-					  }
-					else{
-						if (!move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-							echo "Image could not be uploaded.";
+			if(isset($_POST['product_update'])){
+				if($_POST['product_update']=='0'){
+					if(isset($_POST['cat_product']) && trim($_POST['cat_product'])!="" && isset($_POST['name_product']) && trim($_POST['name_product'])!="" && isset($_POST['description']) && trim($_POST['description'])!="" && isset($_POST['price']) && trim($_POST['price'])!=""  && isset($_POST['btn']) && trim($_POST['btn'])!=""){
+						$target_dir = "../imgs/";
+						$exploded_array = explode(".",basename($_FILES['img']['name']));
+						$file_ext = strtolower(end($exploded_array));
+						$target_file = $target_dir . $_POST['name_product'].'.'.$file_ext;
+						$check = getimagesize($_FILES["img"]["tmp_name"]);
+						if($check !== false) {
+							if (file_exists($target_file)) {
+								echo "Sorry, file already exists.";
+					  	}
+							else{
+								if (!move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+									echo "Image could not be uploaded.";
+								}
+							}
+						}
+						else {
+							echo "File is not an image.";
+						}
+
+						$query2= "select id from categories where name='".$_POST['cat_product']."';";
+						$result=mysqli_query($con,$query2);
+						$category="";
+						if(mysqli_num_rows($result)!=0){
+							while($row=mysqli_fetch_assoc($result)){
+								$category=$row['id'];
+							}
+
+							$query= "insert into products(name,description,price,category_id,image,featured) values('".$_POST['name_product']."','".$_POST['description']."','".$_POST['price']."','".$category."','".$target_file."','".$_POST['btn']."');";
+							if(!mysqli_query($con,$query)){
+								echo 'Data not inserted into products table as '.mysqli_error($con);
+							}
+
+						}
+						else{
+							echo 'No record of category with name '.$_POST['cat_product'].' found!!';
+							unlink($target_file);
 						}
 					}
 				}
-				else {
-					echo "File is not an image.";
+				else if($_POST['product_update']=='2'){
+					if(isset($_POST['modify_id']) && trim($_POST['modify_id'])!=""){
+						//continue code from here
+					}
 				}
-
-				$query2= "select id from categories where name='".$_POST['cat_product']."';";
-				$result=mysqli_query($con,$query2);
-				$category="";
-				if(mysqli_num_rows($result)!=0){
-					while($row=mysqli_fetch_assoc($result)){
-						$category=$row['id'];
+				else if($_POST['product_update']=='2'){
+					if(isset($_POST['modify_id']) && trim($_POST['modify_id'])!=""){
+						//continue code from here
 					}
-
-					$query= "insert into products(name,description,price,category_id,image,featured) values('".$_POST['name_product']."','".$_POST['description']."','".$_POST['price']."','".$category."','".$target_file."','".$_POST['btn']."');";
-					if(!mysqli_query($con,$query)){
-						echo 'Data not inserted into products table as '.mysqli_error($con);
-					}
-
 				}
 				else{
-					echo 'No record of category with name '.$_POST['cat_product'].' found!!';
-					unlink($target_file);
+					echo 'choose an update method for produt table.'
 				}
 			}
 		}
@@ -139,6 +156,19 @@ if(isset($_POST['update'])){
 			PRODUCTS
 		</h2>
 		<form action="" method="post" enctype="multipart/form-data">
+			SELECT UPDATE METHOD
+			<br>
+			<input type="radio" name="product_update" id="insert_product" value='0'><label for='insert_product'>INSERT DATA</label>
+			<br>
+			<input type="radio" name="product_update" id="update_product" value='1'><label for='update_product'>UPDATE DATA</label>
+			<br>
+			<input type="radio" name="product_update" id="delete_product" value='2'><label for='delete_product'>DELETE DATA</label>
+			<br>
+			<br>
+			MODIFY ID
+			<input type="text" name="product_id" id="product_id">
+			<br>
+			<br>
 			ENTER CATEGORY NAME
 			<input type="text" name="cat_product" id="cat_product">
 			<br>
