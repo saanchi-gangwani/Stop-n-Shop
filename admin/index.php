@@ -135,7 +135,7 @@ if(isset($_POST['update'])){
 						}
 					}
 				}
-				else if($_POST['product_update']=='2'){
+				else if($_POST['product_update']=='1'){
 					if(isset($_POST['modify_id']) && trim($_POST['modify_id'])!=""){
 						//continue code from here
 					}
