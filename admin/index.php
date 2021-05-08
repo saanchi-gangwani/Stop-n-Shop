@@ -83,12 +83,8 @@ if(isset($_POST['update'])){
 			while($row=mysqli_fetch_assoc($result))
 			{
 				echo "<tr>
-                <td>"
-                  .$row["id"].
-                "</td>
-                <td>"
-                  .$row["name"].
-                "</td>
+                <td>".$row["id"]."</td>
+                <td>".$row["name"]."</td>
               </tr>";
 			}
 			?>
