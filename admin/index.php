@@ -101,7 +101,7 @@ if(isset($_POST['update'])){
 						$file_ext = strtolower(end($exploded_array));
 						$target_file = $target_dir . $_POST['name_product'].'.'.$file_ext;
 						$check = getimagesize($_FILES["img"]["tmp_name"]);
-						if($check !== false) {
+						if($check != false) {
 							if (file_exists($target_file)) {
 								echo "Sorry, file already exists.";
 					  	}
@@ -112,7 +112,7 @@ if(isset($_POST['update'])){
 							}
 						}
 						else {
-							echo "File is not an image.";
+							echo "File should not be empty.";
 						}
 
 						$query2= "select id from categories where name='".$_POST['cat_product']."';";
@@ -136,8 +136,30 @@ if(isset($_POST['update'])){
 					}
 				}
 				else if($_POST['product_update']=='1'){
-					if(isset($_POST['modify_id']) && trim($_POST['modify_id'])!=""){
-						//continue code from here
+					if(isset($_POST['product_id']) && trim($_POST['product_id'])!=""){
+						$id=$_POST['product_id'];
+
+						if(isset($_POST['cat_product']) && trim($_POST['cat_product'])!=""){
+							$query2= "select id from categories where name='".$_POST['cat_product']."';";
+							$result=mysqli_query($con,$query2);
+							$category="";
+							if(mysqli_num_rows($result)!=0){
+								while($row=mysqli_fetch_assoc($result)){
+									$category=$row['id'];
+								}
+							}
+							$query="update products set category_id='".$category."' where id='".$id."';";
+							if(!mysqli_query($con,$query)){
+								echo 'Category could not be updated as '.mysqli_error($con);
+							}
+						}
+
+						if(isset($_POST['name_product']) && trim($_POST['name_product'])!=""){
+							$query="update products set name='".$_POST['name_product']."' where id='".$id."';";
+							if(!mysqli_query($con,$query)){
+								echo 'Product name could not be updated as '.mysqli_error($con);
+							}
+						}
 					}
 				}
 				else if($_POST['product_update']=='2'){
@@ -146,7 +168,7 @@ if(isset($_POST['update'])){
 					}
 				}
 				else{
-					echo 'choose an update method for produt table.';
+					echo 'choose an update method for product table.';
 				}
 			}
 		}
@@ -207,6 +229,7 @@ if(isset($_POST['update'])){
 			<tr>
 				<th>ID</th>
 				<th>Name</th>
+				<th>Category ID</th>
 				<th>Description</th>
 				<th>Price</th>
 				<th>Image</th>
@@ -217,6 +240,7 @@ if(isset($_POST['update'])){
 					echo "<tr>
 									<td>".$row['id']."</td>
 									<td>".$row['name']."</td>
+									<td>".$row['category_id']."</td>
 									<td>".$row['description']."</td>
 									<td>".$row['price']."</td>
 									<td>".$row['image']."</td>
