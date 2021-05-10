@@ -1,0 +1,28 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.bodydiv{
+  display: table;
+  width: 100%;
+}
+
+.sectiondiv{
+  display: table-row;
+  text-align: center;
+  width: 100%;
+}
+
+fieldset{
+  display: inline-block;
+}
+
+legend{
+  text-align: left;
+}
+
+.errorspan{
+  color: #f22;
+  display: none;
+}
