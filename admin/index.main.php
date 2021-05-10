@@ -13,6 +13,7 @@
     <meta charset="utf-8">
     <title>Stop n Shop : Admin Console</title>
     <link rel="stylesheet" href="../css/admin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="bodydiv">
@@ -64,7 +65,10 @@
               <input type="number" name="prod_price" id="prod_price" onkeyup='notEmptyValid(this.value,this.id)' onmousedown="notEmptyValid(this.value,this.id)" placeholder="Price"/>
               <br><span class='errorspan' id='prod_price_empty'>The product must have a price associated with it</span><br>
 
-              
+              <span class='labespan'><label for='prod_image'>Product Image</label></span>
+              <input type="file" name="prod_image" id='prod_image' onchange="displayImgPrev(this)" onclick="notEmptyValid('1',this.id)">
+              <span class='filespan' onclick="$('#prod_image').click()">Choose Product Image<br><img id='prod_upload_image' src='#' alt='image'></span>
+              <br><span class='errorspan' id='prod_image_empty'>Upload an image of the image.</span><br>
 
               <button type="submit" name="prod_submit" id='prod_submit'>Add Product</input>
             </form>

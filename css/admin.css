@@ -26,3 +26,19 @@ legend{
   color: #f22;
   display: none;
 }
+
+input[type='file']{
+  display:none;
+}
+
+.filespan{
+  display: inline-block;
+  border: solid 1px #000;
+  cursor: pointer;
+}
+
+.filespan img{
+  height: 100px;
+  width: 100px;
+  display: none;
+}
