@@ -155,16 +155,91 @@ if(isset($_POST['update'])){
 						}
 
 						if(isset($_POST['name_product']) && trim($_POST['name_product'])!=""){
-							$query="update products set name='".$_POST['name_product']."' where id='".$id."';";
+							$query2="select name,image from products where id='".$_POST['product_id']."';";
+							$result=mysqli_query($con,$query2);
+							$name="";
+							$image="";
+							while($row=mysqli_fetch_assoc($result)){
+								$name=$row['name'];
+								$image=$row['image'];
+							}
+							$exploded=explode($name,$image);
+							$new_image=$exploded[0].$_POST['name_product'].$exploded[1];
+							rename($image,$new_image);
+							$query="update products set name='".$_POST['name_product']."', image='".$new_image."' where id='".$id."';";
 							if(!mysqli_query($con,$query)){
 								echo 'Product name could not be updated as '.mysqli_error($con);
+							}
+						}
+
+						if(isset($_POST['description']) && trim($_POST['description'])!=""){
+							$query="update products set description='".$_POST['description']."' where id='".$id."';";
+							if(!mysqli_query($con,$query)){
+								echo 'Product description could not be updated as '.mysqli_error($con);
+							}
+						}
+
+						if(isset($_POST['price']) && trim($_POST['price'])!=""){
+							$query="update products set price='".$_POST['price']."' where id='".$id."';";
+							if(!mysqli_query($con,$query)){
+								echo 'Product price could not be updated as '.mysqli_error($con);
+							}
+						}
+
+						if(file_exists($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])){
+							$target_dir = "../imgs/";
+							$exploded_array = explode(".",basename($_FILES['img']['name']));
+							$file_ext = strtolower(end($exploded_array));
+							$query2="select name,image from products where id='".$_POST['product_id']."'";
+							$result=mysqli_query($con,$query2);
+							$name='';
+							$image='';
+							while($row=mysqli_fetch_assoc($result)){
+								$name=$row['name'];
+								$image=$row['image'];
+							}
+							unlink($image);
+							$target_file = $target_dir . $name.'.'.$file_ext;
+							$check = getimagesize($_FILES["img"]["tmp_name"]);
+							if($check != false) {
+								if (file_exists($target_file)) {
+									echo "Sorry, file already exists.";
+								}
+								else{
+									if (!move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+										echo "Image could not be uploaded.";
+									}
+								}
+							}
+							else {
+								echo "File should not be empty.";
+							}
+							$query="update products set image='".$target_file."' where id='".$_POST['product_id']."'";
+							if(!mysqli_query($con,$query)){
+								echo "Could not update image.";
+								unlink($target_file);
+							}
+						}
+
+						if(isset($_POST['btn'])){
+							$query="update products set featured='".$_POST['btn']."' where id='".$id."';";
+							if(!mysqli_query($con,$query)){
+								echo 'Product feature could not be updated as '.mysqli_error($con);
 							}
 						}
 					}
 				}
 				else if($_POST['product_update']=='2'){
-					if(isset($_POST['modify_id']) && trim($_POST['modify_id'])!=""){
-						//continue code from here
+					if(isset($_POST['product_id']) && trim($_POST['product_id'])!=""){
+						$query2="select image from products where id='".$_POST['product_id']."';";
+						$result=mysqli_query($con,$query2);
+						$row=mysqli_fetch_assoc($result);
+						$image=$row['image'];
+						unlink($image);
+						$query="delete from products where id='".$_POST['product_id']."';";
+						if(!mysqli_query($con,$query)){
+							echo "Could not delete product as ".mysqli_error($con);
+						}
 					}
 				}
 				else{
@@ -222,14 +297,14 @@ if(isset($_POST['update'])){
 		</form>
 		<br>
 		<?php
-		$query2='select * from products;';
+		$query2='select products.*,categories.name as cname from products inner join categories on products.category_id=categories.id;';
 		$result=mysqli_query($con,$query2);
 		?>
 		<table border='2'>
 			<tr>
 				<th>ID</th>
 				<th>Name</th>
-				<th>Category ID</th>
+				<th>Category Name</th>
 				<th>Description</th>
 				<th>Price</th>
 				<th>Image</th>
@@ -240,7 +315,7 @@ if(isset($_POST['update'])){
 					echo "<tr>
 									<td>".$row['id']."</td>
 									<td>".$row['name']."</td>
-									<td>".$row['category_id']."</td>
+									<td>".$row['cname']."</td>
 									<td>".$row['description']."</td>
 									<td>".$row['price']."</td>
 									<td>".$row['image']."</td>
