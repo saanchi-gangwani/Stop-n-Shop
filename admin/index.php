@@ -297,7 +297,7 @@ if(isset($_POST['update'])){
 		</form>
 		<br>
 		<?php
-		$query2='select products.*,categories.name as cname from products inner join categories on products.category_id=categories.id;';
+		$query2='select products.*,categories.name as cname from products inner join categories on products.category_id=categories.id order by products.id asc;';
 		$result=mysqli_query($con,$query2);
 		?>
 		<table border='2'>
