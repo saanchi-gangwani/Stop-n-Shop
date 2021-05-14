@@ -25,3 +25,7 @@ function displayImgPrev(input) {
     document.getElementById('prod_upload_image').style.display='inline';
   }
 }
+
+function closeError(){
+  $('#errordiv').css({"display":"none"});
+}
