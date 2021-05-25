@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2021 at 10:00 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: May 25, 2021 at 05:00 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `addresses` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `address` text DEFAULT NULL,
-  `type` enum('Default','Secondary') DEFAULT NULL
+  `user_id` int(11) NOT NULL,
+  `address` text NOT NULL,
+  `type` enum('Default','Secondary') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -42,8 +42,8 @@ CREATE TABLE `addresses` (
 
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `price` decimal(8,2) DEFAULT NULL
+  `user_id` int(11) NOT NULL,
+  `price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -55,8 +55,8 @@ CREATE TABLE `cart` (
 CREATE TABLE `cart_products` (
   `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `price` decimal(8,2) DEFAULT NULL
+  `quantity` int(11) NOT NULL,
+  `price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -78,10 +78,10 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `order_date` date DEFAULT NULL,
-  `price` decimal(8,2) DEFAULT NULL,
-  `address_id` int(11) DEFAULT NULL
+  `user_id` int(11) NOT NULL,
+  `order_date` date NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `address_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -93,8 +93,8 @@ CREATE TABLE `orders` (
 CREATE TABLE `order_products` (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `price` decimal(8,2) DEFAULT NULL
+  `quantity` int(11) NOT NULL,
+  `price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -105,12 +105,12 @@ CREATE TABLE `order_products` (
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `price` decimal(7,2) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `image` varchar(256) DEFAULT NULL,
-  `featured` enum('YES','NO') DEFAULT NULL
+  `name` varchar(30) NOT NULL,
+  `description` text NOT NULL,
+  `price` decimal(7,2) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `image` varchar(256) NOT NULL,
+  `featured` enum('YES','NO') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -121,11 +121,11 @@ CREATE TABLE `products` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(60) DEFAULT NULL,
-  `email` varchar(128) DEFAULT NULL,
-  `phone_no` bigint(20) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
-  `type` enum('Admin','Customer') DEFAULT NULL
+  `name` varchar(60) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `phone_no` bigint(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `type` enum('Admin','Customer') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -157,7 +157,8 @@ ALTER TABLE `cart_products`
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `orders`
@@ -179,13 +180,19 @@ ALTER TABLE `order_products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
+  ADD UNIQUE KEY `name_2` (`name`,`image`),
+  ADD UNIQUE KEY `image` (`image`),
   ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`,`phone_no`),
+  ADD UNIQUE KEY `email_2` (`email`),
+  ADD UNIQUE KEY `phone_no` (`phone_no`);
 
 --
 -- AUTO_INCREMENT for dumped tables

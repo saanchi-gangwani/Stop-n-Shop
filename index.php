@@ -1,5 +1,15 @@
 <?php
 require(__DIR__."/config/connection.php");
+
+session_start();
+if(isset($_SESSION['email'])){
+  if($_SESSION['type']=='Customer'){
+    header("Location:home.php");
+  }
+  else{
+    header('Location:categories.php');
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,11 +63,13 @@ require(__DIR__."/config/connection.php");
             $type=$row['type'];
             }
             if($password==$_POST['login_password']){
+              $_SESSION['type'] = $type;
+              $_SESSION['email'] = $_POST['login_email'];
               if($type=='Customer'){
-                echo "Login Successful";
+                header('Location:home.php');
               }
               else if($type=='Admin'){
-                header('Location:admin/index.php');
+                header('Location:categories.php');
               }
             }
             else{

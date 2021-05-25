@@ -1,12 +1,14 @@
 <?php
- require(__DIR__.'/config/connection.php');
+require(__DIR__.'/config/connection.php');
 
- function errorMsg($msg){
-   echo "<div id='errordiv'>
-          <p>".$msg."</p>
-          <button type='button' onclick='closeError();'>Ok</button>
-         </div>";
- }
+session_start();
+function errorMsg($msg){
+ echo "<div id='errordiv'>
+        <p>".$msg."</p>
+        <button type='button' onclick='closeError();'>Ok</button>
+       </div>";
+}
+
 ?>
 
 <!DOCTYPE html>
