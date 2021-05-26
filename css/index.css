@@ -1,0 +1,46 @@
+:root{
+  --bg: #F1DDF5;
+  --formdivbg: #F1ECFF;
+}
+
+body{
+  margin:0;
+  padding: 0;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.bodydiv{
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: var(--bg);
+}
+
+.bodydiv>div{
+  margin: 0 auto;
+}
+
+.logodiv{
+  width: 200px;
+  height: 115px;
+  padding: 0;
+}
+
+.logodiv img{
+  margin-top: 15px;
+  height: 100px;
+  width: 200px;
+}
+
+.formdiv{
+  margin-top: 15px !important;
+  width: 650px;
+  height: 78vh;
+  background-color: var(--formdivbg);
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.16);
+}
