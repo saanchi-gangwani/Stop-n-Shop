@@ -43,4 +43,19 @@ a{
   height: 78vh;
   background-color: var(--formdivbg);
   box-shadow: 0px 0px 10px rgba(0,0,0,0.16);
+  display: grid;
+  grid-template-rows: repeat(3,1fr);
+}
+
+.fielddiv{
+  text-align: center;
+}
+
+.fielddiv legend{
+  text-align: left;
+}
+
+.fielddiv form div:not(:first-child){
+  margin-top: 1.5vh;
+
 }

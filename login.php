@@ -16,11 +16,30 @@ session_start();
         <img src="resources/logo.png" alt="Stop n Shop">
       </div>
       <div class="formdiv">
-        <h2>Login</h2>
-        <form method="post">
-
-        </form>
+        <div class="">
+        </div>
+        <div class="fielddiv">
+          <fieldset>
+            <legend>Login</legend>
+            <div class="">
+              <form class="" action="" method="post">
+                <div class="">
+                  <label for="login_email">Email: </label><input type="email" name="login_email" id="login_email" placeholder="Email">
+                </div>
+                <div class="">
+                  <label for="login_password">Password: </label><input type="password" name="login_password" id="login_password" placeholder="Password">
+                </div>
+                <div class="">
+                  <button type="submit" name="login_submit" id="login_submit">LOGIN</button>
+                </div>
+              </form>
+            </div>
+          </fieldset>
+        </div>
+        <div class="">
+        </div>
       </div>
     </div>
   </body>
+  <script src="js/master.js"></script>
 </html>
