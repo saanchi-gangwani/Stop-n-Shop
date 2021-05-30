@@ -1,18 +1,3 @@
-:root{
-  --bg: #F1DDF5;
-  --formdivbg: #F1ECFF;
-}
-
-body{
-  margin:0;
-  padding: 0;
-}
-
-a{
-  color: inherit;
-  text-decoration: none;
-}
-
 .bodydiv{
   box-sizing: border-box;
   height: 100vh;
@@ -41,21 +26,26 @@ a{
   margin-top: 15px !important;
   width: 650px;
   height: 78vh;
+  box-sizing: border-box;
   background-color: var(--formdivbg);
   box-shadow: 0px 0px 10px rgba(0,0,0,0.16);
   display: grid;
   grid-template-rows: repeat(3,1fr);
+  padding: 0 4vw;
 }
 
 .fielddiv{
-  text-align: center;
+  text-align: left;
+}
+
+.fielddiv fieldset{
+  padding: 1vh 2vw;
 }
 
 .fielddiv legend{
   text-align: left;
 }
 
-.fielddiv form div:not(:first-child){
+.fielddiv form div{
   margin-top: 1.5vh;
-
 }

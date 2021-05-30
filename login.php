@@ -8,6 +8,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <title>Stop n Shop: Login</title>
+    <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/enter.css">
   </head>
   <body>
@@ -24,10 +25,16 @@ session_start();
             <div class="">
               <form class="" action="" method="post">
                 <div class="">
-                  <label for="login_email">Email: </label><input type="email" name="login_email" id="login_email" placeholder="Email">
+                  <label for="login_email">Email</label>
                 </div>
                 <div class="">
-                  <label for="login_password">Password: </label><input type="password" name="login_password" id="login_password" placeholder="Password">
+                  <input type="email" name="login_email" id="login_email" placeholder="Email">
+                </div>
+                <div class="">
+                  <label for="login_password">Password</label>
+                </div>
+                <div class="">
+                  <input type="password" name="login_password" id="login_password" placeholder="Password">
                 </div>
                 <div class="">
                   <button type="submit" name="login_submit" id="login_submit">LOGIN</button>
