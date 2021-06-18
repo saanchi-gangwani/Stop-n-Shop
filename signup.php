@@ -8,6 +8,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <title>Stop n Shop: Login</title>
+    <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/enter.css">
   </head>
   <body>
