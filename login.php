@@ -23,15 +23,9 @@ session_start();
           <fieldset>
             <legend>Login</legend>
             <div class="">
-              <form class="" action="" method="post">
-                <div class="">
-                  <label for="login_email">Email</label>
-                </div>
+              <form method="post">
                 <div class="">
                   <input type="email" name="login_email" id="login_email" placeholder="Email">
-                </div>
-                <div class="">
-                  <label for="login_password">Password</label>
                 </div>
                 <div class="">
                   <input type="password" name="login_password" id="login_password" placeholder="Password">
@@ -43,7 +37,8 @@ session_start();
             </div>
           </fieldset>
         </div>
-        <div class="">
+        <div class="redirectdiv">
+          If you are a new user, <a href='signup.php'>Sign Up Here</a>.
         </div>
       </div>
     </div>
