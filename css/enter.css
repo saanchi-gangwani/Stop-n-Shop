@@ -1,15 +1,3 @@
-.bodydiv{
-  box-sizing: border-box;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  background-color: var(--bg);
-}
-
-.bodydiv>div{
-  margin: 0 auto;
-}
-
 .logodiv{
   width: 200px;
   height: 115px;

@@ -2,6 +2,24 @@
 require(__DIR__."/config/connection.php");
 session_start();
 //session redirection codes
+if(isset($_SESSION['useremail'])){
+  header("Location:home.php");
+}
+
+if(isset($_POST['signup_submit'])){
+  if(isset($_POST['signup_name']) && trim($_POST['signup_name'])!="" && isset($_POST['signup_email']) && trim($_POST['signup_email'])!="" && isset($_POST['signup_password']) && trim($_POST['signup_password'])!="" && isset($_POST['signup_confirm_password']) && trim($_POST['signup_confirm_password'])!="" && isset($_POST['signup_phone']) && trim($_POST['signup_phone'])!=""){
+    if($_POST['signup_password']==$_POST['signup_confirm_password']){
+      $query = "insert into users(name, email, password, phone_no, type) values('".$_POST['signup_name']."','".$_POST['signup_email']."','".$_POST['signup_password']."','".$_POST['signup_phone']."',2);";
+      if(!mysqli_query($con, $query)){
+        echo 'could not create user as '.mysqli_error($con);
+      }
+      else{
+        $_SESSION['useremail'] = $_POST['signup_email'];
+        header('Location: home.php');
+      }
+    }
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -29,6 +47,9 @@ session_start();
                 </div>
                 <div class="">
                   <input type="email" name="signup_email" id="signup_email" placeholder="Email">
+                </div>
+                <div class="">
+                  <input type="number" name="signup_phone" id="signup_phone" placeholder="Phone Number">
                 </div>
                 <div class="">
                   <input type="password" name="signup_password" id="signup_password" placeholder="Enter a Password">

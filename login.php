@@ -1,7 +1,28 @@
 <?php
 require(__DIR__."/config/connection.php");
 session_start();
-//session redirection codes
+// session redirection codes
+if(isset($_SESSION['useremail'])){
+  header("Location:home.php");
+}
+
+if(isset($_POST['login_submit'])){
+  if(isset($_POST['login_email']) && trim($_POST['login_email'])!="" && isset($_POST['login_password']) && trim($_POST['login_password'])!=""){
+    $query = "select password from users where email='".$_POST['login_email']."';";
+    $result = mysqli_query($con, $query);
+
+    $pass = "";
+    while($row = mysqli_fetch_assoc($result)){
+      $pass = $row['password'];
+    }
+
+    if($pass==$_POST['login_password']){
+      $_SESSION['useremail'] = $_POST['login_email'];
+      header("Location:home.php");
+    }
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

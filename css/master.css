@@ -12,3 +12,15 @@ a{
   color: inherit;
   text-decoration: none;
 }
+
+.bodydiv{
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: var(--bg);
+}
+
+.bodydiv>div{
+  margin: 0 auto;
+}
