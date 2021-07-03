@@ -1,0 +1,11 @@
+.bodydiv{
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto; 
+  background-color: var(--bg);
+}
+
+.bodydiv>div{
+  margin: 0 auto;
+}

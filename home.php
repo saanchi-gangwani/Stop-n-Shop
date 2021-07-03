@@ -17,6 +17,7 @@ if(!isset($_SESSION['useremail'])){
   </head>
   <body>
     <div class="bodydiv">
+      <?php include(__DIR__.'/header.php'); ?>
     </div>
   </body>
   <script type="text/javascript" src="js/master.js"></script>
