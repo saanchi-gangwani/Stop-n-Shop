@@ -5,3 +5,8 @@
   overflow-y: auto;
   background-color: var(--bg);
 }
+
+.carousel-item img{
+  width: inherit;
+  height: 500px;
+}
