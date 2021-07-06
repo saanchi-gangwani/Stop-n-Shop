@@ -23,13 +23,13 @@ if(!isset($_SESSION['useremail'])){
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="https://image.freepik.com/free-vector/summer-colection-banner-with-hand-drawn-flowers_1188-312.jpg" alt="First slide">
+              <img class="d-block w-100" src="resources/carousel_1.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="https://image.freepik.com/free-vector/floral-sale-landing-page-with-photo-hand-drawn-flowers_1188-309.jpg" alt="Second slide">
+              <img class="d-block w-100" src="resources/carousel_2.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="https://image.freepik.com/free-psd/clothing-store-concept-banner-template_23-2148722602.jpg" alt="Third slide">
+              <img class="d-block w-100" src="resources/carousel_3.jpg" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -44,7 +44,7 @@ if(!isset($_SESSION['useremail'])){
       </div>
     </div>
     <div class="productdiv">
-      
+
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
