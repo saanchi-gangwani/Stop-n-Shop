@@ -20,7 +20,7 @@ if(!isset($_SESSION['useremail'])){
     <div class="bodydiv">
       <?php include(__DIR__.'/header.php'); ?>
       <div class="carouseldiv">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div id="carouselControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img class="d-block w-100" src="resources/carousel_1.jpg" alt="First slide">
@@ -32,11 +32,11 @@ if(!isset($_SESSION['useremail'])){
               <img class="d-block w-100" src="resources/carousel_3.jpg" alt="Third slide">
             </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
