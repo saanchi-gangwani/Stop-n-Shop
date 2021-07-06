@@ -10,3 +10,60 @@
   width: inherit;
   height: 500px;
 }
+
+.productdiv{
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 2vh 1vw;
+  grid-gap: 2vh
+}
+
+.categorydiv{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 8fr;
+  grid-gap: 1vh;
+}
+
+.productdisplaydiv{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 0.8vw;
+}
+
+.productinfodiv{
+  background-color: var(--productinfobg);
+  border: 1px solid var(--purple);
+  display: grid;
+  border-radius: 20px;
+  grid-template-rows: 2fr 1fr 1fr;
+  grid-gap: 0.3vh;
+}
+
+.productimagediv{
+  background-image: url("../resources/carousel_1.jpg");
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-size: 100% 100%;
+}
+
+.productnamediv{
+  text-align: center;
+  font-size: 27px;
+  padding-top: 2.1vh;
+}
+
+.productmathsdiv{
+  border-top: 1px solid var(--purple);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.productpricediv{
+  background-color: #47336D;
+  color: #D0A4D8;
+  border-bottom-left-radius: 20px;
+  text-align: center;
+  font-size: 27px;
+  padding-top: 2.1vh;
+}

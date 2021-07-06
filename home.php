@@ -42,9 +42,27 @@ if(!isset($_SESSION['useremail'])){
           </a>
         </div>
       </div>
-    </div>
-    <div class="productdiv">
+      <div class="productdiv">
+        <div class="categorydiv">
+          <h3>Category</h3>
+          <div class="productdisplaydiv">
+            <div class="productinfodiv">
+              <div class="productimagediv">
+              </div>
+              <div class="productnamediv">
+                NAME
+              </div>
+              <div class="productmathsdiv">
+                <div class="productpricediv">
+                  &#8377; 30
+                </div>
+                <div class="productquantdiv">
 
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
