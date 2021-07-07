@@ -43,29 +43,46 @@ if(!isset($_SESSION['useremail'])){
         </div>
       </div>
       <div class="productdiv">
-        <div class="categorydiv">
-          <h3>Category</h3>
-          <div class="productdisplaydiv">
-            <div class="productinfodiv">
-              <div class="productimagediv">
-              </div>
-              <div class="productnamediv">
-                NAME
-              </div>
-              <div class="productmathsdiv">
-                <div class="productpricediv">
-                  &#8377; 30
+        <?php
+        $queryCat = "select name from categories;";
+        $resultCat = mysqli_query($con, $queryCat);
+        while($rowCat = mysqli_fetch_assoc($resultCat)){
+          ?>
+          <div class="categorydiv">
+            <h3><?php echo $rowCat['name']; ?></h3>
+            <div class="productdisplaydiv">
+            <?php
+            $queryProd = "select * from products where category_id=(select id from categories where name='".$rowCat['name']."');";
+            $resultProd = mysqli_query($con,$queryProd);
+            while($rowProd = mysqli_fetch_assoc($resultProd)){
+              ?>
+              <div class="productinfodiv">
+                <div class="productimagediv" style="background-image: url('<?php echo $rowProd['image']; ?>');">
                 </div>
-                <div class="productquantdiv">
-
+                <div class="productnamediv">
+                  <?php echo $rowProd['name']; ?>
+                </div>
+                <div class="productmathsdiv">
+                  <div class="productpricediv">
+                    &#8377; <?php echo $rowProd['price']; ?>
+                  </div>
+                  <div class="productquantdiv">
+                    
+                  </div>
                 </div>
               </div>
+              <?php
+            }
+            ?>
             </div>
-        </div>
+          </div>
+          <?php
+        }
+        ?>
       </div>
     </div>
   </body>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/master.js"></script>
