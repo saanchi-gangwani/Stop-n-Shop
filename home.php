@@ -5,6 +5,8 @@ session_start();
 if(!isset($_SESSION['useremail'])){
   header("Location:login.php");
 }
+
+//codes for click on plus and/or minus buttons go here
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +69,26 @@ if(!isset($_SESSION['useremail'])){
                     &#8377; <?php echo $rowProd['price']; ?>
                   </div>
                   <div class="productquantdiv">
-                    
+                    <form method="post">
+                      <?php
+                      $queryCart = "select * from cart inner join cart_products on cart.id=cart_products.cart_id where cart.user_id=(select id from users where email='".$_SESSION['useremail']."') and cart_products.product_id='".$rowProd['id']."';";
+                      $resultCart = mysqli_query($con, $queryCart);
+                      ?>
+                      <div class="quantdiv">
+                        <button type="submit" name="minusbutton" value="<?php echo $rowProd['id']; ?>">-</button>
+                        <span class="cartvlauespan" id="cartvalue_<?php echo $rowProd['id']; ?>">
+                          <?php
+                          if(mysqli_num_rows($resultCart)==0) echo "0";
+                          else{
+                            while($rowCart = mysqli_fetch_assoc($resultCart)){
+                              echo $rowCart['quantity'];
+                            }
+                          }
+                          ?>
+                        </span>
+                        <button type="submit" name="plusbutton" value="<?php echo $rowProd['id']; ?>">+</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
