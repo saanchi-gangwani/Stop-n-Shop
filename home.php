@@ -71,7 +71,7 @@ if(!isset($_SESSION['useremail'])){
                   <div class="productquantdiv">
                     <form method="post">
                       <div class="quantdiv">
-                        <button type="submit" name="minusbutton" value="<?php echo $rowProd['id']; ?>">-</button>
+                        <button type="button" name="minusbutton" id="minusbutton" value="<?php echo $rowProd['id']."-"; ?>" onclick="updateCart(this.value)">-</button>
                         <span class="cartvlauespan" id="cartvalue_<?php echo $rowProd['id']; ?>">
                           <?php
                           $queryCart = "select * from cart inner join cart_products on cart.id=cart_products.cart_id where cart.user_id=(select id from users where email='".$_SESSION['useremail']."') and cart_products.product_id='".$rowProd['id']."';";
@@ -84,7 +84,7 @@ if(!isset($_SESSION['useremail'])){
                           }
                           ?>
                         </span>
-                        <button type="submit" name="plusbutton" value="<?php echo $rowProd['id']; ?>">+</button>
+                        <button type="button" name="plusbutton" id="plusbutton" value="<?php echo $rowProd['id']."+"; ?>" onclick="updateCart(this.value)">+</button>
                       </div>
                     </form>
                   </div>
@@ -101,7 +101,7 @@ if(!isset($_SESSION['useremail'])){
       </div>
     </div>
   </body>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/master.js"></script>
