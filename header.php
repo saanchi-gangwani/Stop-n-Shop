@@ -2,7 +2,7 @@
 <header>
   <div class="headerdiv">
     <div class="logodiv">
-      <img src="resources/logo.png" alt="Stop n Shop logo">
+      <a href='home.php'><img src="resources/logo.png" alt="Stop n Shop logo"></a>
     </div>
     <div class="navdiv">
       <nav>
