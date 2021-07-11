@@ -22,29 +22,27 @@ if(!mysqli_num_rows($resultGet)==0){
 }
 
 if($sign=="-"){
-
-  if($quant==1){
+  if($quant>=1){
     $query = "update cart set total_price=total_price-".$indivPrice." where id='".$cartId."' and user_id=(select id from users where email='".$_SESSION['useremail']."');";
     if(!mysqli_query($con, $query)){
       echo mysqli_error($con);
     }
-    $query = "delete from cart_products where cart_id='".$cartId."' and product_id='".$prodId."';";
-    if(!mysqli_query($con, $query)){
-      echo mysqli_error($con);
-    }
 
-  } else if($quant>1){
-    $query = "update cart set total_price=total_price-".$indivPrice." where id='".$cartId."' and user_id=(select id from users where email='".$_SESSION['useremail']."');";
-    if(!mysqli_query($con, $query)){
-      echo mysqli_error($con);
+    if($quant==1){
+      $query = "delete from cart_products where cart_id='".$cartId."' and product_id='".$prodId."';";
+      if(!mysqli_query($con, $query)){
+        echo mysqli_error($con);
+      }
     }
-    $query = "update cart_products set quantity=quantity-1, price=price-".$indivPrice." where cart_id='".$cartId."' and product_id='".$prodId."';";
-    if(!mysqli_query($con, $query)){
-      echo mysqli_error($con);
+    else{
+      $query = "update cart_products set quantity=quantity-1, price=price-".$indivPrice." where cart_id='".$cartId."' and product_id='".$prodId."';";
+      if(!mysqli_query($con, $query)){
+        echo mysqli_error($con);
+      }
     }
-
   }
-} else{
+}
+else {
   if($quant == 0){
     $query = "select price from products where id='".$prodId."';";
     $result = mysqli_query($con, $query);
