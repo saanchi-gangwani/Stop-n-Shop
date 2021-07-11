@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2021 at 05:00 AM
+-- Generation Time: Jul 11, 2021 at 09:03 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -43,7 +43,7 @@ CREATE TABLE `addresses` (
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `price` decimal(8,2) NOT NULL
+  `total_price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -106,11 +106,9 @@ CREATE TABLE `order_products` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `description` text NOT NULL,
   `price` decimal(7,2) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `image` varchar(256) NOT NULL,
-  `featured` enum('YES','NO') NOT NULL
+  `image` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
