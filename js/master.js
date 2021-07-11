@@ -8,7 +8,10 @@ function updateCart(value){
     url: "php/updatecart.php",
     data: {value:value},
     success:function(data){
-      console.log(data); // changes to the page to be done here!!!
+      //console.log(data); // changes to the page to be done here!!!
+      id=value.substring(0,value.length-1);
+      console.log(id);
+      document.getElementById('cartvalue_'+id).innerHTML=data;
     }
   });
 }
