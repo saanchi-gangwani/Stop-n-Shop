@@ -1,0 +1,23 @@
+footer{
+  display: block;
+}
+
+.footerdiv{
+  display: grid;
+  grid-template-rows: 3fr 2fr;
+  text-align: center;
+  background-color: var(--headerbg);
+}
+
+.sitemapdiv{
+  display: grid;
+  grid-template-columns: 1fr repeat(4,2fr) 1fr;
+  border-bottom: 2px solid var(--bg);
+  padding-top: 18px;
+  box-sizing: border-box;
+}
+
+.copyrightdiv{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

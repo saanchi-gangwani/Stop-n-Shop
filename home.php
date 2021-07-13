@@ -5,8 +5,6 @@ session_start();
 if(!isset($_SESSION['useremail'])){
   header("Location:login.php");
 }
-
-//codes for click on plus and/or minus buttons go here
 ?>
 
 <!DOCTYPE html>
@@ -99,6 +97,7 @@ if(!isset($_SESSION['useremail'])){
         }
         ?>
       </div>
+      <?php include(__DIR__.'/footer.php'); ?>
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
