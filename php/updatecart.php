@@ -8,7 +8,6 @@ $prodId = (int)substr($_POST['value'],0,-1);
 $queryGet = "select * from cart inner join cart_products on cart.id=cart_products.cart_id where cart.user_id=(select id from users where email='".$_SESSION['useremail']."') and cart_products.product_id='".$prodId."';";
 $resultGet = mysqli_query($con, $queryGet);
 
-
 $quant = 0;
 $cartId = 0;
 $indivPrice = 0;
