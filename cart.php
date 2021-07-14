@@ -29,8 +29,9 @@ if(!isset($_SESSION['useremail']))
           if(mysqli_num_rows($result)==0){
             ?>
             <div class="nocartdiv">
-              jaldi kar panvel nikalna hai
-              <!-- display no cart comment -->
+              <span>Your cart is empty :( </span>
+              <span>You may go to Stop n Shop home page to explore more products ;)</span>
+              <a href="home.php"><button type="button" name="button">Home page</button></a>
             </div>
             <?php
           }
@@ -43,15 +44,41 @@ if(!isset($_SESSION['useremail']))
             $result=mysqli_query($con,$query);
             while($row=mysqli_fetch_assoc($result))
             {
-              // display cart products
-              echo $row['product_id'];
-              echo $row['price'];
+              ?>
+              <div class="cartproductdiv">
+                <?php
+                $queryProd="select image from products where id='".$row['product_id']."';";
+                $resultProd=mysqli_query($con,$queryProd);
+                while($rowProd=mysqli_fetch_assoc($resultProd))
+                {
+                 ?>
+                 <div class="productimagediv" style="background-image: url('<?php echo $rowProd['image']; ?>');">
+                 </div>
+                 <!-- Work done till here -->
+                 <?php
+                }
+                ?>
+                <div class="productinfodiv">
+                  <div class="productnamediv">
+
+                  </div>
+                  <div class="productmathsdiv">
+                    <div class="productpricediv">
+
+                    </div>
+                    <div class="productquantdiv">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <?php
             }
           }
           ?>
         </div>
         <div class="cartpricediv">
-
+          <!-- Total price  -->
         </div>
       </div>
       <?php include(__DIR__.'/footer.php'); ?>
