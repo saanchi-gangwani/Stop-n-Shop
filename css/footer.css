@@ -12,9 +12,13 @@ footer{
 .sitemapdiv{
   display: grid;
   grid-template-columns: 1fr repeat(4,2fr) 1fr;
-  border-bottom: 2px solid var(--bg);
+  border-bottom: 1px solid var(--bg);
   padding-top: 18px;
   box-sizing: border-box;
+}
+
+.sitemapdiv a:hover{
+  text-decoration: underline !important;
 }
 
 .copyrightdiv{

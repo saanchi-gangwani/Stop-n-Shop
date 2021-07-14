@@ -14,6 +14,6 @@ body{
 }
 
 a, a:active, a:focus, a:visited{
-  color: inherit;
+  color: black !important;
   text-decoration: none !important;
 }

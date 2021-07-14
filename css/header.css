@@ -22,8 +22,13 @@
   font-size: 18px;
 }
 
+nav a:hover{
+  text-decoration: underline !important;
+}
+
 .navelementdiv svg{
-  height: 18px;
-  width: 18px;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
   margin-right: 8px;
 }
