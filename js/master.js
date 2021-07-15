@@ -9,8 +9,19 @@ function updateCart(value){
     data: {value:value},
     success:function(data){
       id=value.substring(0,value.length-1);
-      console.log(id);
       document.getElementById('cartvalue_'+id).innerHTML=data;
     }
   });
+}
+
+function update2Cart(value){
+  updateCart(value);
+  // rest of the function
+  id=value.substring(0,value.length-1);
+  var quant = document.getElementById('cartvalue_'+id).innerHTML.trim();
+  console.log(quant); // check why data not updating
+  if(quant===0){
+    var temp = document.getElementById('cartproductdiv_'+id);
+    temp.remove();
+  }
 }

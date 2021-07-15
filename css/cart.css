@@ -8,7 +8,7 @@
 
 .cartdiv{
   display: grid;
-  grid-template-columns: 13fr 7fr;
+  grid-template-columns: 7fr 3fr;
   grid-template-rows: 1fr;
   grid-column-gap: 30px;
   padding: 25px;
@@ -21,13 +21,61 @@
 }
 
 .cartdisplaydiv > div{
-  height: 200px;
+  height: 230px;
   box-shadow: 0 0 10px #555;
   background-color: var(--formdivbg);
 }
 
+.cartproductdiv{
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  padding: 2vh 0;
+  box-sizing: border-box;
+}
+
 .productimagediv{
-  height: 200px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin: 0 1vw;
+}
+
+.productinfodiv{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  margin-right: 1vw;
+}
+
+.productnamediv{
+  box-sizing: border-box;
+  padding-top: 40px;
+  text-align: center;
+  font-size: 27px;
+  border-bottom: 1px solid var(--purple);
+}
+
+.productmathsdiv{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top : 10px;
+}
+
+.productpricediv{
+  padding-top: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 27px;
+  border-right: 1px solid var(--purple);
+}
+
+.productquantdiv{
+  padding-top: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 27px;
+}
+
+.productquantdiv button{
+  font-size: 25px;
 }
 
 /* .cartpricediv{

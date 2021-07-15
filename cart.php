@@ -45,7 +45,7 @@ if(!isset($_SESSION['useremail']))
             while($row=mysqli_fetch_assoc($result))
             {
               ?>
-              <div class="cartproductdiv">
+              <div class="cartproductdiv" id="cartproductdiv_<?php echo $row['product_id']; ?>">
                 <?php
                 $queryProd="select image from products where id='".$row['product_id']."';";
                 $resultProd=mysqli_query($con,$queryProd);
@@ -54,20 +54,40 @@ if(!isset($_SESSION['useremail']))
                  ?>
                  <div class="productimagediv" style="background-image: url('<?php echo $rowProd['image']; ?>');">
                  </div>
-                 <!-- Work done till here -->
                  <?php
                 }
                 ?>
                 <div class="productinfodiv">
                   <div class="productnamediv">
-
+                    <?php
+                    $queryProd = "select name from products where id='".$row['product_id']."';";
+                    $resultProd = mysqli_query($con, $queryProd);
+                    while($rowProd = mysqli_fetch_assoc($resultProd)){
+                      echo $rowProd['name'];
+                    }
+                    ?>
                   </div>
                   <div class="productmathsdiv">
                     <div class="productpricediv">
-
+                      <span id='pricevalue_<?php echo $row['product_id']; ?>'>
+                        &#8377; <?php echo $row['price']; ?>
+                      </span>
                     </div>
                     <div class="productquantdiv">
-
+                      <button type="button" name="minus2button" id="minus2button" value="<?php echo $row['product_id']."-"; ?>" onclick="update2Cart(this.value)">-</button>
+                      <span class="cartvlauespan" id="cartvalue_<?php echo $row['product_id']; ?>">
+                        <?php
+                        $queryCart = "select * from cart inner join cart_products on cart.id=cart_products.cart_id where cart.user_id=(select id from users where email='".$_SESSION['useremail']."') and cart_products.product_id='".$row['product_id']."';";
+                        $resultCart = mysqli_query($con, $queryCart);
+                        if(mysqli_num_rows($resultCart)==0) echo "0";
+                        else{
+                          while($rowCart = mysqli_fetch_assoc($resultCart)){
+                            echo $rowCart['quantity'];
+                          }
+                        }
+                        ?>
+                      </span>
+                      <button type="button" name="plus2button" id="plus2button" value="<?php echo $row['product_id']."+"; ?>" onclick="update2Cart(this.value)">+</button>
                     </div>
                   </div>
                 </div>
@@ -84,5 +104,6 @@ if(!isset($_SESSION['useremail']))
       <?php include(__DIR__.'/footer.php'); ?>
     </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/master.js"></script>
 </html>
