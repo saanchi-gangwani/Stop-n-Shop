@@ -9,19 +9,36 @@ function updateCart(value){
     data: {value:value},
     success:function(data){
       id=value.substring(0,value.length-1);
-      document.getElementById('cartvalue_'+id).innerHTML=data;
+      div = document.getElementById('cartvalue_'+id);
+      if(div!==null){
+          div.innerHTML=data;
+      }
     }
   });
 }
 
 function update2Cart(value){
-  updateCart(value);
-  // rest of the function
   id=value.substring(0,value.length-1);
-  var quant = document.getElementById('cartvalue_'+id).innerHTML.trim();
-  console.log(quant); // check why data not updating
-  if(quant===0){
-    var temp = document.getElementById('cartproductdiv_'+id);
-    temp.remove();
+  operation = value.substring(value.length-1);
+  quant = document.getElementById('cartvalue_'+id).innerHTML.trim();
+  if(quant==='1' && operation==='-'){
+    document.getElementById('cartproductdiv_'+id).remove();
   }
+
+  updateCart(value);
+
+  // enter price ajax function here
+
+  cartdisplaydiv = document.getElementById('cartdisplaydiv');
+  if(cartdisplaydiv.innerHTML.trim()===""){
+    cartdisplaydiv.innerHTML = createNoCartDiv();
+  }
+}
+
+function createNoCartDiv(){
+return '<div class="nocartdiv">'+
+        '<span>Your cart is empty :( </span>'+
+        '<span>You may go to Stop n Shop home page to explore more products ;)</span>'+
+        '<button type="button" name="button" onclick="window.location.replace(\'home.php\')">Home page</button>'+
+       '</div>';
 }

@@ -15,12 +15,13 @@ if(!isset($_SESSION['useremail']))
     <title>Stop n Shop: Cart</title>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/cart.css">
+    <script type="text/javascript" src="js/master.js"></script>
   </head>
   <body>
     <div class="bodydiv">
       <?php include(__DIR__.'/header.php'); ?>
       <div class="cartdiv">
-        <div class="cartdisplaydiv">
+        <div class="cartdisplaydiv" id='cartdisplaydiv'>
           <?php
           $totalPrice=0;
           $cartId=0;
@@ -28,11 +29,9 @@ if(!isset($_SESSION['useremail']))
           $result=mysqli_query($con,$query);
           if(mysqli_num_rows($result)==0){
             ?>
-            <div class="nocartdiv">
-              <span>Your cart is empty :( </span>
-              <span>You may go to Stop n Shop home page to explore more products ;)</span>
-              <a href="home.php"><button type="button" name="button">Home page</button></a>
-            </div>
+            <script type="text/javascript">
+            document.write(createNoCartDiv());
+            </script>
             <?php
           }
           else{
@@ -105,5 +104,4 @@ if(!isset($_SESSION['useremail']))
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/master.js"></script>
 </html>

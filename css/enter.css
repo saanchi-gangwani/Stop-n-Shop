@@ -73,8 +73,8 @@
 }
 
 .formdiv a{
-  text-decoration: underline;
-  color: rgb(75,75,255);
+  text-decoration: underline !important;
+  color: rgb(75,75,255) !important;
 }
 
 .redirectdiv{

@@ -22,15 +22,30 @@
 
 .cartdisplaydiv > div{
   height: 230px;
-  box-shadow: 0 0 10px #555;
+  box-shadow: 0 0 20px #555;
   background-color: var(--formdivbg);
+  box-sizing: border-box;
+}
+
+.nocartdiv{
+  padding: 7vh 1vw;
+  font-size: 27px;
+  text-align: center;
+}
+
+.nocartdiv span{
+  display: block;
+  margin-bottom: 2vh;
+}
+
+.nocartdiv button{
+  font-size: 20px;
 }
 
 .cartproductdiv{
   display: grid;
   grid-template-columns: 2fr 3fr;
   padding: 2vh 0;
-  box-sizing: border-box;
 }
 
 .productimagediv{
