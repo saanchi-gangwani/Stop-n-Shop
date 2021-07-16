@@ -68,7 +68,7 @@ if(!isset($_SESSION['useremail']))
                   </div>
                   <div class="productmathsdiv">
                     <div class="productpricediv">
-                      <span id='pricevalue_<?php echo $row['product_id']; ?>'>
+                      <span id='pricevalue_<?php echo $row['product_id']; ?>' class="pricevaluespan">
                         &#8377; <?php echo $row['price']; ?>
                       </span>
                     </div>
