@@ -59,8 +59,8 @@
 }
 
 .productpricediv{
-  background-color: #47336D;
-  color: #D0A4D8;
+  background-color: var(--pricebg);
+  color: var(--pricefg);
   border-bottom-left-radius: 20px;
   text-align: center;
   font-size: 27px;

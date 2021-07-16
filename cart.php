@@ -97,7 +97,39 @@ if(!isset($_SESSION['useremail']))
           ?>
         </div>
         <div class="cartpricediv">
-          <!-- Total price  -->
+          <hr>
+          <div class="cartinfodiv">
+            <div>
+              Total Quantity
+            </div>
+            <div class="cartquantdiv" id="cartquantdiv">
+              <?php
+              $query="select sum(quantity) as q from cart_products inner join cart on cart.id=cart_products.cart_id where cart.user_id=(select id from users where email='".$_SESSION['useremail']."');";
+              $result=mysqli_query($con,$query);
+              while($row=mysqli_fetch_assoc($result))
+              {
+                echo $row['q'];
+              }
+              ?>
+            </div>
+            <div>
+              Total Price
+            </div>
+            <div class="carttotaldiv" id="carttotaldiv">
+              <?php
+              $query="select total_price from cart where user_id=(select id from users where email='".$_SESSION['useremail']."');";
+              $result=mysqli_query($con,$query);
+              while($row=mysqli_fetch_assoc($result))
+              {
+                echo "&#8377; ".$row['total_price'];
+              }
+              ?>
+            </div>
+          </div>
+          <hr>
+          <div class="checkoutdiv">
+            <button type="button" name="button">Checkout</button>
+          </div>
         </div>
       </div>
       <?php include(__DIR__.'/footer.php'); ?>
