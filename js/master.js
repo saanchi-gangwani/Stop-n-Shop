@@ -13,7 +13,8 @@ function updateCart(value){
       if(div!==null){
           div.innerHTML=data;
       }
-    }
+    },
+    async: false
   });
 }
 
@@ -39,11 +40,25 @@ function update2Cart(value){
 
   updateCart(value);
 
+  $.ajax({
+    type: "POST",
+    url: "php/updatetotal.php",
+    data: {check:""},
+    success: function(data)
+    {
+      arr=data.split("-");
+      document.getElementById('carttotaldiv').innerHTML="  &#8377; "+arr[0];
+      document.getElementById('cartquantdiv').innerHTML=arr[1];
+    },
+    async: false
+  });
 
 
   cartdisplaydiv = document.getElementById('cartdisplaydiv');
   if(cartdisplaydiv.innerHTML.trim()===""){
     cartdisplaydiv.innerHTML = createNoCartDiv();
+    document.getElementById('carttotaldiv').innerHTML="  &#8377; 0";
+    document.getElementById('cartquantdiv').innerHTML="0";
   }
 }
 

@@ -106,6 +106,10 @@ if(!isset($_SESSION['useremail']))
               <?php
               $query="select total_price from cart where user_id=(select id from users where email='".$_SESSION['useremail']."');";
               $result=mysqli_query($con,$query);
+              if(mysqli_num_rows($result)==0)
+              {
+                echo "&#8377; 0";
+              }
               while($row=mysqli_fetch_assoc($result))
               {
                 echo "&#8377; ".$row['total_price'];
@@ -119,9 +123,15 @@ if(!isset($_SESSION['useremail']))
               <?php
               $query="select sum(quantity) as q from cart_products inner join cart on cart.id=cart_products.cart_id where cart.user_id=(select id from users where email='".$_SESSION['useremail']."');";
               $result=mysqli_query($con,$query);
+
               while($row=mysqli_fetch_assoc($result))
               {
-                echo $row['q'];
+                if($row['q']==null){
+                  echo "0";
+                }
+                else{
+                  echo $row['q'];
+                }
               }
               ?>
             </div>
