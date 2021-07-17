@@ -6,7 +6,7 @@ function updateCart(value){
   $.ajax({
     type: "POST",
     url: "php/updatecart.php",
-    data: {value:value},
+    data: {value:value,check:""},
     success:function(data){
       id=value.substring(0,value.length-1);
       div = document.getElementById('cartvalue_'+id);

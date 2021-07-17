@@ -18,7 +18,7 @@ if(!isset($_SESSION['useremail'])){
   </head>
   <body>
     <div class="bodydiv">
-      <?php include(__DIR__.'/header.php'); ?>
+      <?php include(__DIR__.'/php/header.php'); ?>
       <div class="carouseldiv">
         <div id="carouselControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -97,7 +97,7 @@ if(!isset($_SESSION['useremail'])){
         }
         ?>
       </div>
-      <?php include(__DIR__.'/footer.php'); ?>
+      <?php include(__DIR__.'/php/footer.php'); ?>
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
