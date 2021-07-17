@@ -19,3 +19,7 @@ a, a:active, a:focus, a:visited{
   color: black !important;
   text-decoration: none !important;
 }
+
+button{
+  cursor: pointer;
+}
