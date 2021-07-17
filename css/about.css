@@ -1,0 +1,26 @@
+.bodydiv{
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  background-color: var(--bg);
+}
+
+.contentdiv{
+  min-height: 75.8vh;
+  box-sizing: border-box;
+  padding: 6vh 3vw;
+}
+
+.contentdiv > div{
+  background-color: var(--formdivbg);
+  box-shadow: 0 0 5px var(--purple);
+  margin-top: 4vh;
+  padding: 2vh 1vw;
+}
+
+.contentdiv > div > h2{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
