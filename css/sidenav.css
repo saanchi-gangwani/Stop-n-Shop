@@ -1,0 +1,31 @@
+.sidenavdiv{
+  border: 3px solid #3c2b5c;
+  background-color: var(--pricebg);
+  height: 70vh;
+}
+
+.sidenavdiv > img{
+  margin: 2vh auto;
+  height: 100px;
+  width: 100px;
+  display: block;
+}
+
+.sidenavdiv :nth-child(3){
+  display: block;
+  box-sizing: border-box;
+  border-top: 3px solid #3c2b5c;
+  border-bottom: 3px solid #3c2b5c;
+}
+
+.sidenavelediv{
+  color: var(--pricefg);
+  padding: 10px 5px;
+  font-size: 20px;
+}
+
+.sidenavelediv > svg{
+  fill: var(--pricefg);
+  height: 18px;
+  width: 18px;
+}
