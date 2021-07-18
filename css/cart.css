@@ -99,7 +99,7 @@
   background-color: var(--pricebg);
   color: var(--pricefg);
   box-sizing: border-box;
-  padding: 14vh 3vw;
+  padding: 10vh 3vw;
 }
 
 .cartpricediv hr{
