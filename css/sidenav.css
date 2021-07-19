@@ -29,3 +29,14 @@
   height: 18px;
   width: 18px;
 }
+
+a:hover .sidenavelediv{
+  background-color: var(--formdivbg);
+  color: var(--purple);
+  transition: 0.2s;
+}
+
+a:hover .sidenavelediv svg{
+  fill: var(--purple);
+  transition: 0.2s;
+}
