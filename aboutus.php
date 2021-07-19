@@ -21,10 +21,10 @@ if(!isset($_SESSION['useremail']))
       <?php include(__DIR__.'/php/header.php'); ?>
       <div class="contentdiv">
         <div class="aboutdiv">
-          <h2>About Us</h2>
+          <h3>About Us</h3>
         </div>
         <div class="contactdiv">
-          <h2>Contact Us</h2>
+          <h3>Contact Us</h3>
         </div>
       </div>
       <?php include(__DIR__.'/php/footer.php'); ?>

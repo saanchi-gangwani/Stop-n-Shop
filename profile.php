@@ -20,7 +20,7 @@ if(!isset($_SESSION['useremail'])){
       <div class="profilediv">
         <?php include(__DIR__.'/php/sidenav.php'); ?>
         <div class="accountdiv">
-          
+          <h3>Profile Settings</h3>
         </div>
       </div>
       <?php include(__DIR__.'/php/footer.php'); ?>
