@@ -23,7 +23,7 @@
 
 .cartdisplaydiv > div{
   height: 230px;
-  box-shadow: 0 0 5px var(--purple);
+  box-shadow: var(--boxshadow);
   background-color: var(--formdivbg);
   box-sizing: border-box;
 }
