@@ -8,6 +8,7 @@
   --black: #000;
   --pricebg: #47336D;
   --pricefg: #D0A4D8;
+  --boxshadow: 0 0 5px var(--purple);
 }
 
 body{

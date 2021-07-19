@@ -28,7 +28,7 @@
   height: 78vh;
   box-sizing: border-box;
   background-color: var(--formdivbg);
-  box-shadow: 0 0 5px var(--purple);
+  box-shadow: var(--boxshadow);
   display: grid;
   grid-template-rows: 1fr 1fr 2fr;
   padding: 0 2vw;

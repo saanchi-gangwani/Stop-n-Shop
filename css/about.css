@@ -14,7 +14,7 @@
 
 .contentdiv > div{
   background-color: var(--formdivbg);
-  box-shadow: 0 0 5px var(--purple);
+  box-shadow: var(--boxshadow);
   margin-top: 4vh;
   padding: 2vh 1vw;
 }
