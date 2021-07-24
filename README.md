@@ -20,4 +20,4 @@ SNS is an open source repository and can be found [here](https://github.com/saan
 * [Devjyot Singh Sidhu](https://github.com/devoghub)
 * [Saanchi Gangwani](https://github.com/saanchi-gangwani)<br/>
 
-**NOTE: SNS is still an ongoing project and has certain features such as an admin panel, order history not implemented or features like address management which are partially implemented. We, however, hope to finish this project ASAP with all these features live soon.**
+**NOTE: SNS is still an ongoing project and has certain features such as an admin panel, order history which have not yet been implemented or features like address management which are partially implemented. We, however, hope to finish this project ASAP with all these features live soon.**
