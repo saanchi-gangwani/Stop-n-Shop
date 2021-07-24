@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2021 at 09:03 PM
+-- Generation Time: Jul 24, 2021 at 02:08 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -70,6 +70,14 @@ CREATE TABLE `categories` (
   `name` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Clothing'),
+(2, 'Furniture');
+
 -- --------------------------------------------------------
 
 --
@@ -110,6 +118,20 @@ CREATE TABLE `products` (
   `category_id` int(11) NOT NULL,
   `image` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `price`, `category_id`, `image`) VALUES
+(1, 'Orange Jumpsuit', '1000.00', 1, 'imgs/Orange Jumpsuit.jpg'),
+(2, 'Pink Top', '700.00', 1, 'imgs/Pink Top.jpg'),
+(3, 'Pink Hoodie', '450.00', 1, 'imgs/Pink Hoodie.jpg'),
+(4, 'Black Dress', '300.00', 1, 'imgs/Black Dress.jpg'),
+(5, 'Purple Table', '3000.00', 2, 'imgs/Purple Table.jpg'),
+(6, 'White Chair', '2000.00', 2, 'imgs/White Chair.jpg'),
+(7, 'White Desk', '6000.00', 2, 'imgs/White Desk.jpg'),
+(8, 'Blue Sofa', '20000.00', 2, 'imgs/Blue Sofa.jpg');
 
 -- --------------------------------------------------------
 
@@ -212,7 +234,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -224,7 +246,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
