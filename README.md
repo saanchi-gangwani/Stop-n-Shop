@@ -1,4 +1,5 @@
 # Stop-n-Shop
+<p align='center'><img align='center' src='resources/logo_white.png' alt='Stop n Shop Logo' height='300px'/></p>
 Welcome to Stop n Shop! SNS is a sample E-commerce website whose backend is completely built on Laravel PHP and MySQL Database. On the frontside, the website uses HTML, CSS, Vanilla JavaScript and some frontend frameworks like Bootstrap and jQuery.<br/>
 The site has all the major features of a real-world E-commerce website including registration and logging in of users, cart management, profile management, storage of multiple addresses etc.<br/>
 The website uses [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) project as the only PHP dependency to store environment variables for the connection to the database. Instructions on how to use it are given below.<br/>
