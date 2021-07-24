@@ -28,6 +28,9 @@ if(!isset($_SESSION['useremail']))
           <p>
             The site has all the major features of a real-world E-commerce website including registration and logging in of users, cart management, profile management, storage of multiple addresses etc.
           </p>
+          <p>
+            Refer the project's readme <a href="https://github.com/saanchi-gangwani/Stop-n-Shop/blob/main/README.md">here</a> to know more!!
+          </p>
         </div>
         <div class="contactdiv">
           <h3>Contact Us</h3>
