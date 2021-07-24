@@ -10,7 +10,7 @@ Kindly contact either of the contributors of the project for the removal of any 
 ## Usage and Software requirements
 SNS is an open source repository and can be found [here](https://github.com/saanchi-gangwani/Stop-n-Shop). The project is not intended to be set live in the future and hence one needs to run it on their personal computers to view how it looks. Below are the steps to do the same:
 * Clone the repository on your local machine from [here](https://github.com/saanchi-gangwani/Stop-n-Shop).
-* Create a MySQL database of the name 'stop_n_shop' and import the file [sql/stop_n_shop.sql](sql/stop_n_shop.sql). This SQL file only has the structure of the database and not actual data.
+* Create a MySQL database of the name 'stop_n_shop' and import the file [sql/stop_n_shop.sql](sql/stop_n_shop.sql). This SQL file only has the structure of the database and not actual user data, however, it has data loaded for 'categories' and 'products' tables which can be used directly or changed as per one's requirements. Please remember to change the images under [imgs/](imgs/) folder as well if you change the data in these two tables.
 * Use composer to include phpdotenv dependency to the project's config/composer folder.
 * Create a .env file in config/ subfolder and use the [config/.env.example](config/.env.example) as an example to define all the environment variables required.
 * Run the project using a PHP server on your localhost. (Apache is recommended)<br/>
