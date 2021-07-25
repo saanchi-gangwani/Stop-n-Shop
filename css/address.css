@@ -25,7 +25,16 @@
   text-align: center;
 }
 
-/* Add Address grid styling here */
+.displayaddressdiv{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 15px;
+}
+
+.phonediv, .namediv{
+  font-weight:bold;
+
+}
 
 .addressdiv form{
   margin-top: 5vh;

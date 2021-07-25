@@ -23,7 +23,7 @@ if(!isset($_SESSION['useremail']))
         <div class="aboutdiv">
           <h3>About Us</h3>
           <p>
-            Welcome to Stop n Shop! SNS is a sample E-commerce website whose backend is completely built on Laravel PHP and MySQL Database. On the frontside, the website uses HTML, CSS, Vanilla JavaScript and some frontend frameworks like Bootstrap and jQuery.
+            Welcome to Stop n Shop! SNS is a sample E-commerce website whose backend is completely built on Laravel PHP and MySQL Database. For the frontend, the website uses HTML, CSS, Vanilla JavaScript and some frontend frameworks like Bootstrap and jQuery.
           </p>
           <p>
             The site has all the major features of a real-world E-commerce website including registration and logging in of users, cart management, profile management, storage of multiple addresses etc.

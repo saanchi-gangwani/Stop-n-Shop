@@ -57,7 +57,36 @@ if(isset($_POST['address_submit'])){
             ?>
             <div class="existingaddressdiv">
               <h4>Your Saved Addresses</h4>
-              <!-- Add address grids -->
+              <div class="displayaddressdiv">
+                <div class="defaultdiv">
+                  <?php
+                    $query="select * from addresses where user_id=(select id from users where email = '".$_SESSION['useremail']."') and type=1;";
+                    $result=mysqli_query($con,$query);
+                    while($row=mysqli_fetch_assoc($result))
+                    {
+                      $address=explode("+",$row['address']);
+                      ?>
+                      <div class="namediv">
+                        <?php echo $address[0]; ?>
+                      </div>
+                      <?php
+                      for($i=1;$i<count($address)-1;$i++)
+                      {
+                        ?>
+                        <div>
+                          <?php echo $address[$i]; ?>
+                        </div>
+                        <?php
+                      }
+                      ?>
+                      <div class="phonediv">
+                        <?php echo $address[count($address)-1]; ?>
+                      </div>
+                      <?php
+                    }
+                  ?>
+                </div>
+              </div>
             </div>
             <?php
           }
