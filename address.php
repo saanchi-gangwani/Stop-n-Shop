@@ -33,6 +33,25 @@ if(isset($_POST['address_submit'])){
     }
   }
 }
+
+if(isset($_POST['removebutton'])){
+    $value = $_POST['removebutton'];
+
+    $query = "delete from addresses where id='".$value."';";
+    if(!mysqli_query($con, $query)){
+        echo "Could not delete address as ".mysqli_error($con);
+    }
+}
+
+if(isset($_POST['setdefaultbutton'])){
+    $value = $_POST['setdefaultbutton'];
+
+    $query = "update addresses set type = 2 where user_id=(select id from users where email='".$_SESSION['useremail']."') and type=1;";
+    mysqli_query($con, $query);
+
+    $query = "update addresses set type=1 where id='".$value."';";
+    mysqli_query($con, $query);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -58,34 +77,77 @@ if(isset($_POST['address_submit'])){
             <div class="existingaddressdiv">
               <h4>Your Saved Addresses</h4>
               <div class="displayaddressdiv">
-                <div class="defaultdiv">
-                  <?php
-                    $query="select * from addresses where user_id=(select id from users where email = '".$_SESSION['useremail']."') and type=1;";
-                    $result=mysqli_query($con,$query);
-                    while($row=mysqli_fetch_assoc($result))
-                    {
-                      $address=explode("+",$row['address']);
-                      ?>
-                      <div class="namediv">
-                        <?php echo $address[0]; ?>
-                      </div>
-                      <?php
-                      for($i=1;$i<count($address)-1;$i++)
-                      {
+                <?php
+                $query = "select * from addresses where user_id = (select id from users where email = '".$_SESSION['useremail']."') order by type;";
+                $result = mysqli_query($con, $query);
+                $count = 0;
+                while($row = mysqli_fetch_assoc($result)){
+                    $address=explode("+",$row['address']);
+                    if($count==0){
                         ?>
-                        <div>
-                          <?php echo $address[$i]; ?>
+                        <div class="defaultdiv">
+                            <div class="showaddressdiv">
+                                <div>
+                                    <?php echo $address[0]; ?>
+                                </div>
+                                <div>
+                                    <?php
+                                    for($i = 1; $i<count($address)-1; $i++){
+                                        ?>
+                                        <div>
+                                            <?php
+                                            echo $address[$i];
+                                            ?>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div>
+                                    <span class="phonespan">Phone Number: </span><?php echo $address[count($address)-1]; ?>
+                                </div>
+                            </div>
+                            <div class="labeldiv">
+                                Default Address
+                            </div>
                         </div>
                         <?php
-                      }
-                      ?>
-                      <div class="phonediv">
-                        <?php echo $address[count($address)-1]; ?>
-                      </div>
-                      <?php
+                        $count = 1;
                     }
-                  ?>
-                </div>
+                    else{
+                        ?>
+                        <div class="secondarydiv">
+                            <div class="showaddressdiv">
+                                <div>
+                                    <?php echo $address[0]; ?>
+                                </div>
+                                <div>
+                                    <?php
+                                    for($i = 1; $i<count($address)-1; $i++){
+                                        ?>
+                                        <div>
+                                            <?php
+                                            echo $address[$i];
+                                            ?>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div>
+                                    <span class="phonespan">Phone Number: </span><?php echo $address[count($address)-1]; ?>
+                                </div>
+                            </div>
+                            <div class="removediv"><form method="POST">
+                                    <button type="submit" name="removebutton" value="<?php echo $row['id']; ?>">Remove this Address</button>
+                                    <button type="submit" name="setdefaultbutton" value="<?php echo $row['id']; ?>">Set as Default</button>
+                                </form></div>
+                        </div>
+
+                        <?php
+                    }
+                }
+                ?>
               </div>
             </div>
             <?php

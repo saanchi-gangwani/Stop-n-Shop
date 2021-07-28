@@ -29,11 +29,48 @@
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-gap: 15px;
+  padding: 3vh 0 5vh 0;
 }
 
-.phonediv, .namediv{
-  font-weight:bold;
+.defaultdiv, .secondarydiv{
+  border: solid 1px var(--black);
+  box-sizing: border-box;
+}
 
+.showaddressdiv{
+  padding-left: 9px;
+}
+
+.showaddressdiv > div:nth-child(1){
+  font-weight: bold ;
+}
+
+.phonespan{
+  font-weight: bold;
+}
+
+.labeldiv, .removediv{
+  border-top: solid 1px var(--black);
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.removediv > form{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.removediv > form > button{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: center;
+  font-style: italic;
+  color: blue;
+  text-decoration: underline;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .addressdiv form{
