@@ -141,6 +141,55 @@ if(!isset($_SESSION['useremail']))
           <div class="checkoutdiv">
             <button type="button" name="button">Checkout</button>
           </div>
+          <div class="displayaddressdiv">
+            <?php
+            $query="select * from addresses where user_id=(select id from users where email='".$_SESSION['useremail']."') and type=1;";
+            $result=mysqli_query($con,$query);
+            if(mysqli_num_rows($result)==0)
+            {
+              echo "<span class='noaddressspan'> Click <a href='address.php'>here</a> to add an address first</span>";
+            }
+            else {
+              ?>
+              <div class="deliverydiv">
+                <div>
+                  Your Products will be delivered to:
+                </div>
+                <?php
+                while($row=mysqli_fetch_assoc($result))
+                {
+                  $address=explode("+",$row['address']);
+                  ?>
+                  <div class="showaddressdiv">
+                      <div>
+                          <?php echo $address[0]; ?>
+                      </div>
+                      <div>
+                          <?php
+                          for($i = 1; $i<count($address)-1; $i++){
+                              ?>
+                              <div>
+                                  <?php
+                                  echo $address[$i];
+                                  ?>
+                              </div>
+                              <?php
+                          }
+                          ?>
+                      </div>
+                      <div>
+                          <span class="phonespan">Phone Number: </span><?php echo $address[count($address)-1]; ?>
+                      </div>
+                  </div>
+                  <?php
+                }
+                ?>
+              </div>
+              <span class="changespan">Click <a href="address.php">here</a> to change this delivery address</span>
+              <?php
+            }
+            ?>
+          </div>
         </div>
       </div>
       <?php include(__DIR__.'/php/footer.php'); ?>

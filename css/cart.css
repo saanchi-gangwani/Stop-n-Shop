@@ -95,11 +95,11 @@
 }
 
 .cartpricediv{
-  height: 63.2vh;
+  height: 66vh;
   background-color: var(--pricebg);
   color: var(--pricefg);
   box-sizing: border-box;
-  padding: 10vh 3vw;
+  padding: 2vh 3vw;
 }
 
 .cartpricediv hr{
@@ -137,4 +137,44 @@
   box-sizing: border-box;
   padding: 5px;
   width: 40%;
+}
+
+.displayaddressdiv{
+  font-size: 15px;
+  margin-top: 25px;
+}
+
+.noaddressspan{
+  display: block;
+  text-align: center;
+  font-size: 20px;
+}
+
+.noaddressspan a{
+  text-decoration: underline !important;
+  color: var(--white) !important;
+}
+
+.deliverydiv{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.deliverydiv > div:first-child, .showaddressdiv > div:first-child, .showaddressdiv span{
+  font-weight: bold;
+}
+
+.showaddressdiv{
+  text-align: right;
+}
+
+.changespan{
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.changespan a{
+  text-decoration: underline !important;
+  color: var(--white) !important;
 }
