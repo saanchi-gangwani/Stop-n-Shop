@@ -11,4 +11,5 @@ $username=$_ENV["USER"];
 $password=$_ENV["PASS"];
 $dbname=$_ENV["DATABASE"];
 $con=mysqli_connect($host,$username,$password,$dbname) or die("Could not connect to database");
+$key = $_ENV['RAZORPAY_KEY'];
 ?>
