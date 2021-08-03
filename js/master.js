@@ -69,3 +69,29 @@ return '<div class="nocartdiv">'+
         '<button type="button" name="button" onclick="window.location.replace(\'home.php\')">Go to Home page</button>'+
        '</div>';
 }
+
+function pay(){
+  amount = parseInt(document.getElementById('carttotaldiv').innerHTML.trim().substring(2))*100;
+  if(amount===0) alert("Add items to cart before checking out.");
+  else{
+    // Razorpay code here ... update order history on success ... alert on failure
+    var options = {
+      "key": key,
+      "amount": amount,
+      "currency": "INR",
+      "name": "Stop n Shop",
+      "description": "Test Transaction",
+      "image": "resources/icon.png",
+      "handler": function (response){
+        // success handler
+      }
+    }
+
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function (response){
+      alert("Payment Failed");
+    });
+
+    rzp1.open();
+  }
+}

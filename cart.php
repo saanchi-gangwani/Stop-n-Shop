@@ -16,6 +16,8 @@ if(!isset($_SESSION['useremail']))
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/cart.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <?php echo "<script> key = '".$key."';</script>"; ?>
     <script type="text/javascript" src="js/master.js"></script>
   </head>
   <body>
@@ -139,7 +141,7 @@ if(!isset($_SESSION['useremail']))
           </div>
           <hr>
           <div class="checkoutdiv">
-            <button type="button" name="button">Checkout</button>
+            <button type="button" name="button" onclick='pay()'>Checkout</button>
           </div>
           <div class="displayaddressdiv">
             <?php
@@ -185,7 +187,7 @@ if(!isset($_SESSION['useremail']))
                 }
                 ?>
               </div>
-              <span class="changespan">Click <a href="address.php">here</a> to change this delivery address</span>
+              <span class="changespan">Click <a href="address.php">here</a> to change your default delivery address</span>
               <?php
             }
             ?>
