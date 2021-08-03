@@ -72,24 +72,31 @@ return '<div class="nocartdiv">'+
 
 function pay(){
   amount = parseInt(document.getElementById('carttotaldiv').innerHTML.trim().substring(2))*100;
+  changespan = document.getElementsByClassName('changespan');
   if(amount===0) alert("Add items to cart before checking out.");
+  else if(changespan.length===0 || changespan===null) alert("Please add a default address first.");
   else{
-    // Razorpay code here ... update order history on success ... alert on failure
     var options = {
       "key": key,
       "amount": amount,
       "currency": "INR",
       "name": "Stop n Shop",
-      "description": "Test Transaction",
       "image": "resources/icon.png",
       "handler": function (response){
-        // success handler
+        $.ajax({
+          type:"POST",
+          url:"php/updateorder.php",
+          data:{check:""},
+          success: function(data){
+            alert("Payment successful, your order will be delivered shortly.");
+          }
+        });
       }
     }
 
     var rzp1 = new Razorpay(options);
     rzp1.on('payment.failed', function (response){
-      alert("Payment Failed");
+      alert("Payment failed, try again later.");
     });
 
     rzp1.open();
