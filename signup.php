@@ -29,6 +29,7 @@ if(isset($_POST['signup_submit'])){
     <title>Stop n Shop: Sign Up</title>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/enter.css">
+    <link rel="icon" href="resources/icon.png">
   </head>
   <body>
     <div class="bodydiv">

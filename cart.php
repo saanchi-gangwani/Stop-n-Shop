@@ -16,6 +16,7 @@ if(!isset($_SESSION['useremail']))
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/cart.css">
+    <link rel="icon" href="resources/icon.png">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <?php echo "<script> key = '".$key."';</script>"; ?>
     <script type="text/javascript" src="js/master.js"></script>

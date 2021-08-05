@@ -61,6 +61,7 @@ if(isset($_POST['setdefaultbutton'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/address.css">
+    <link rel="icon" href="resources/icon.png">
   </head>
   <body>
     <div class="bodydiv">
