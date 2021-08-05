@@ -129,7 +129,7 @@
       </svg> Manage Addresses
     </div>
   </a>
-  <a href="#">
+  <a href="order_history.php">
     <div class="sidenavelediv">
       <svg
          xmlns:dc="http://purl.org/dc/elements/1.1/"
