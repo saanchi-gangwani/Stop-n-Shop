@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2021 at 02:08 PM
+-- Generation Time: Aug 05, 2021 at 01:28 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -31,7 +31,7 @@ CREATE TABLE `addresses` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `address` text NOT NULL,
-  `type` enum('Default','Secondary') NOT NULL
+  `type` enum('Default','Secondary','Inactive') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -144,7 +144,7 @@ CREATE TABLE `users` (
   `name` varchar(60) NOT NULL,
   `email` varchar(128) NOT NULL,
   `phone_no` bigint(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(256) NOT NULL,
   `type` enum('Admin','Customer') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

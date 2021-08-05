@@ -9,7 +9,8 @@ if(isset($_SESSION['useremail'])){
 if(isset($_POST['signup_submit'])){
   if(isset($_POST['signup_name']) && trim($_POST['signup_name'])!="" && isset($_POST['signup_email']) && trim($_POST['signup_email'])!="" && isset($_POST['signup_password']) && trim($_POST['signup_password'])!="" && isset($_POST['signup_confirm_password']) && trim($_POST['signup_confirm_password'])!="" && isset($_POST['signup_phone']) && trim($_POST['signup_phone'])!=""){
     if($_POST['signup_password']==$_POST['signup_confirm_password']){
-      $query = "insert into users(name, email, password, phone_no, type) values('".$_POST['signup_name']."','".$_POST['signup_email']."','".$_POST['signup_password']."','".$_POST['signup_phone']."',2);";
+      $pass = password_hash($_POST['signup_password'], PASSWORD_DEFAULT);
+      $query = "insert into users(name, email, password, phone_no, type) values('".$_POST['signup_name']."','".$_POST['signup_email']."','".$pass."','".$_POST['signup_phone']."',2);";
       if(!mysqli_query($con, $query)){
         echo 'could not create user as '.mysqli_error($con);
       }

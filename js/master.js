@@ -89,6 +89,7 @@ function pay(){
           data:{check:""},
           success: function(data){
             alert("Payment successful, your order will be delivered shortly.");
+            window.location.replace('home.php');
           }
         });
       }

@@ -11,12 +11,12 @@ if(isset($_POST['login_submit'])){
     $query = "select password from users where email='".$_POST['login_email']."';";
     $result = mysqli_query($con, $query);
 
-    $pass = "";
+    $pass = false;
     while($row = mysqli_fetch_assoc($result)){
-      $pass = $row['password'];
+      $pass = password_verify($_POST['login_password'], $row['password']);
     }
 
-    if($pass==$_POST['login_password']){
+    if($pass){
       $_SESSION['useremail'] = $_POST['login_email'];
       header("Location:home.php");
     }

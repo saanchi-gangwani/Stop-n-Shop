@@ -37,7 +37,7 @@ if(isset($_POST['address_submit'])){
 if(isset($_POST['removebutton'])){
     $value = $_POST['removebutton'];
 
-    $query = "delete from addresses where id='".$value."';";
+    $query = "update addresses set type=3 where id='".$value."';";
     if(!mysqli_query($con, $query)){
         echo "Could not delete address as ".mysqli_error($con);
     }
@@ -78,7 +78,7 @@ if(isset($_POST['setdefaultbutton'])){
               <h4>Your Saved Addresses</h4>
               <div class="displayaddressdiv">
                 <?php
-                $query = "select * from addresses where user_id = (select id from users where email = '".$_SESSION['useremail']."') order by type;";
+                $query = "select * from addresses where user_id = (select id from users where email = '".$_SESSION['useremail']."') and type!=3 order by type;";
                 $result = mysqli_query($con, $query);
                 $count = 0;
                 while($row = mysqli_fetch_assoc($result)){
