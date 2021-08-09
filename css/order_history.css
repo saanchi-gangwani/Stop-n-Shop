@@ -21,3 +21,11 @@
   text-align: center;
   padding-top: 6vh;
 }
+
+.displaydiv table{
+  margin-top: 3vh;
+}
+
+.displaydiv th{
+  background-color: #ddd !important;
+}

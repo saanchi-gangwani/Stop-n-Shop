@@ -36,36 +36,40 @@ if(!isset($_SESSION['useremail'])){
           }
           else {
             ?>
-            <table>
-              <tr>
-                <th>Order ID</th>
-                <th>Total Quantity</th>
-                <th>Total Price</th>
-                <th>Order Date</th>
-                <th>Order Details</th>
-              </tr>
-              <?php
-              while($row=mysqli_fetch_assoc($result))
-              {
-                $query2="select sum(quantity) as total from order_products where order_id='".$row['id']."';";
-                $result2=mysqli_query($con,$query2);
-                $total_quantity=0;
-                while($row2=mysqli_fetch_assoc($result2))
+            <div>
+              <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Total Quantity</th>
+                    <th>Total Price</th>
+                    <th>Order Date</th>
+                    <th>Order Details</th>
+                  </tr>
+                </thead>
+                <?php
+                while($row=mysqli_fetch_assoc($result))
                 {
-                  $total_quantity=$row2['total'];
+                  $query2="select sum(quantity) as total from order_products where order_id='".$row['id']."';";
+                  $result2=mysqli_query($con,$query2);
+                  $total_quantity=0;
+                  while($row2=mysqli_fetch_assoc($result2))
+                  {
+                    $total_quantity=$row2['total'];
+                  }
+                  ?>
+                  <tr>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $total_quantity; ?></td>
+                    <td><?php echo $row['price']; ?></td>
+                    <td><?php echo $row['order_date']; ?></td>
+                    <td><?php echo $row['id']; ?></td>
+                  </tr>
+                  <?php
                 }
                 ?>
-                <tr>
-                  <td><?php echo $row['id']; ?></td>
-                  <td><?php echo $total_quantity; ?></td>
-                  <td><?php echo $row['price']; ?></td>
-                  <td><?php echo $row['order_date']; ?></td>
-                  <td><?php echo $row['id']; ?></td>
-                </tr>
-                <?php
-              }
-              ?>
-            </table>
+              </table>
+            </div>
             <?php
           }
           ?>
