@@ -44,7 +44,7 @@ if(!isset($_SESSION['useremail'])){
                     <th>Total Quantity</th>
                     <th>Total Price</th>
                     <th>Order Date</th>
-                    <th>Order Details</th>
+                    <!-- <th>Order Details</th> -->
                   </tr>
                 </thead>
                 <?php
@@ -63,7 +63,7 @@ if(!isset($_SESSION['useremail'])){
                     <td><?php echo $total_quantity; ?></td>
                     <td><?php echo $row['price']; ?></td>
                     <td><?php echo $row['order_date']; ?></td>
-                    <td><?php echo $row['id']; ?></td>
+                    <!-- <td><?php //echo $row['id']; ?></td> -->
                   </tr>
                   <?php
                 }
