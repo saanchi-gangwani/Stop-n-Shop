@@ -4,6 +4,10 @@ session_start();
 if(!isset($_SESSION['useremail'])){
   header('Location: login.php');
 }
+
+if(isset($_GET['detailsbutton'])){
+  header('Location: order_details.php?orderid='.$_GET['detailsbutton']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +47,8 @@ if(!isset($_SESSION['useremail'])){
                     <th>Order ID</th>
                     <th>Total Quantity</th>
                     <th>Total Price</th>
-                    <th>Order Date</th>
-                    <!-- <th>Order Details</th> -->
+                    <th>Order Date (YYYY-MM-DD)</th>
+                    <th>Order Details</th>
                   </tr>
                 </thead>
                 <?php
@@ -61,9 +65,9 @@ if(!isset($_SESSION['useremail'])){
                   <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $total_quantity; ?></td>
-                    <td><?php echo $row['price']; ?></td>
+                    <td><?php echo "&#8377; ".$row['price']; ?></td>
                     <td><?php echo $row['order_date']; ?></td>
-                    <!-- <td><?php //echo $row['id']; ?></td> -->
+                    <td><form method="get"><button type='submit' value='<?php echo $row['id']; ?>' name='detailsbutton' id='detailsbutton'>View Details</button></td>
                   </tr>
                   <?php
                 }

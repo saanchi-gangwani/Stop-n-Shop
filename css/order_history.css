@@ -26,6 +26,10 @@
   margin-top: 3vh;
 }
 
-.displaydiv th{
+.displaydiv th, .displaydiv tfoot td{
   background-color: #ddd !important;
+}
+
+.displaydiv tfoot td{
+  font-weight: bold;
 }
