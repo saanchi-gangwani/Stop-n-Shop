@@ -3,7 +3,7 @@
 Welcome to Stop n Shop! SNS is a sample E-commerce website whose backend is completely built on Laravel PHP and MySQL Database. For the frontend, the website uses HTML, CSS, Vanilla JavaScript and some frontend frameworks like Bootstrap and jQuery.<br/>
 The site has all the major features of a real-world E-commerce website including registration and logging in of users, cart management, profile management, storage of multiple addresses etc.<br/>
 The website uses <a href='https://github.com/vlucas/phpdotenv'>vlucas/phpdotenv</a> project as the only PHP dependency to store environment variables for the connection to the database. Instructions on how to use it are given below.<br/>
-The website also has a live Razorpay Payment Gateway Integration in the test mode. In order to to use it on your own, one may use their own Razorpay API key and store it in the .env file as demonstrated in the [config/.env.example](config/.env.example) file.<br/>
+The website also has a live Razorpay Payment Gateway Integration in the test mode. In order to to use it on your own, one may use their own Razorpay API key and store it in the .env file as demonstrated in the <a href='config/.env.example'>.env.example</a> file.<br/>
 
 ## Disclaimer and Notice
 Please note that SNS is not a real website and was built solely for the developers' learning purposes. The website does not aim to violate any kind of copyrights, nor does it aim to be made live for commercial purposes along with the use of any kind of copyrighted assets.<br/>
